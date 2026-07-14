@@ -1,0 +1,43 @@
+name: audit-crawl
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'whatif | target | group'
+        required: true
+        default: 'whatif'
+      value:
+        description: 'domain or group name'
+        required: true
+  schedule:
+    - cron: '0 6 * * 1'
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npx playwright install chromium --with-deps
+      - name: Run crawl
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          EVIDENCE_DIR: ./evidence
+        run: |
+          case "${{ inputs.mode || 'group' }}" in
+            whatif) npx tsx src/index.ts whatif "${{ inputs.value }}" ;;
+            target) npx tsx src/index.ts run --target "${{ inputs.value }}" ;;
+            group)  npx tsx src/index.ts run --group "${{ inputs.value || 'portfolio-watch' }}" ;;
+          esac
+      - name: Upload evidence artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence-${{ github.run_id }}
+          path: evidence/
+          retention-days: 90
+          if-no-files-found: ignore

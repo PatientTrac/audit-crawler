@@ -1,0 +1,5 @@
+{
+  "tokenization-platforms": ["example-rwa.com", "example-tokenize.io"],
+  "healthcare-ai": ["example-clinicalai.com"],
+  "portfolio-watch": ["example-holding1.com", "example-holding2.com"]
+}
