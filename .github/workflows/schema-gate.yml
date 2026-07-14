@@ -1,0 +1,20 @@
+name: schema-gate
+on:
+  push:
+    branches: [main, "feature/*"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  schema-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - name: Verify schema pin
+        run: node scripts/check-schema-pin.mjs
+      - name: Validate fixtures
+        run: node scripts/validate-fixtures.mjs

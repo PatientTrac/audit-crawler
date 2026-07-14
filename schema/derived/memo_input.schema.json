@@ -1,0 +1,143 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "memo_input.schema.json",
+  "title": "MemoInput",
+  "description": "Derived machine-validatable schema from ratified spec memo_input_SCHEMA.json v1.0 (TICKET-9). See DERIVATION_NOTES.md for all judgment calls.",
+  "type": "object",
+  "required": ["meta", "tally", "exec_issues", "sections", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "_comment": { "type": "string" },
+    "_instructions": { "type": "string" },
+    "meta": {
+      "type": "object",
+      "required": ["company_name", "company_url", "industry", "run_date", "preparer", "platform"],
+      "additionalProperties": false,
+      "properties": {
+        "company_name": { "type": "string" },
+        "company_url":  { "type": "string" },
+        "industry":     { "type": "string" },
+        "run_date":     { "type": "string" },
+        "preparer":     { "type": "string" },
+        "platform":     { "type": "string" }
+      }
+    },
+    "tally": {
+      "type": "object",
+      "required": ["fail", "flag", "pass", "na"],
+      "additionalProperties": false,
+      "properties": {
+        "fail": { "type": "integer", "minimum": 0 },
+        "flag": { "type": "integer", "minimum": 0 },
+        "pass": { "type": "integer", "minimum": 0 },
+        "na":   { "type": "integer", "minimum": 0 }
+      }
+    },
+    "exec_issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "resolution", "discovered_issue", "check_codes", "reg_flag", "custody_predicate"],
+        "additionalProperties": false,
+        "properties": {
+          "_comment":          { "type": "string" },
+          "title":             { "type": "string" },
+          "resolution":        { "type": "string" },
+          "discovered_issue":  { "type": "string" },
+          "check_codes":       { "type": "string" },
+          "reg_flag":          { "type": "boolean" },
+          "custody_predicate": { "type": "boolean" }
+        }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "tally_label", "overall_verdict", "triage_label", "triage_is_reg", "findings", "clean_line", "checks"],
+        "additionalProperties": false,
+        "properties": {
+          "id":             { "type": "string", "pattern": "^[A-F]$" },
+          "title":          { "type": "string" },
+          "tally_label":    { "type": "string" },
+          "overall_verdict":{ "type": "string", "enum": ["mixed", "pass", "flag", "fail", "na"] },
+          "triage_label":   { "type": ["string", "null"] },
+          "triage_is_reg":  { "type": "boolean" },
+          "clean_line":     { "type": ["string", "null"] },
+          "findings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["title", "resolution", "audit_discovery", "reg_flag", "source_links"],
+              "additionalProperties": false,
+              "properties": {
+                "title":          { "type": "string" },
+                "resolution":     { "type": "string" },
+                "audit_discovery":{ "type": "string" },
+                "reg_flag":       { "type": "boolean" },
+                "source_links": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["label", "url"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "label": { "type": "string" },
+                      "url":   { "type": ["string", "null"] }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["code", "name", "verdict", "finding"],
+              "additionalProperties": false,
+              "properties": {
+                "code":    { "type": "string" },
+                "name":    { "type": "string" },
+                "verdict": { "type": "string", "enum": ["PASS", "FLAG", "FAIL", "N/A"] },
+                "finding": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "required": ["groups", "note"],
+      "additionalProperties": false,
+      "properties": {
+        "groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "items"],
+            "additionalProperties": false,
+            "properties": {
+              "label": { "type": "string" },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["name", "detail", "url"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "name":   { "type": "string" },
+                    "detail": { "type": "string" },
+                    "url":    { "type": ["string", "null"] }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

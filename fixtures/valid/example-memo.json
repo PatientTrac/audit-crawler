@@ -1,0 +1,152 @@
+{
+  "_comment": "PLACEHOLDER — replace with real Colab output when available. Constructed minimally from ratified spec v1.0 (TICKET-9).",
+  "meta": {
+    "company_name": "Acme AI Corp",
+    "company_url": "acmeai.example.com",
+    "industry": "Financial Services",
+    "run_date": "14 Jul 2026",
+    "preparer": "CoSuite AM",
+    "platform": "Perhaps*"
+  },
+  "tally": { "fail": 1, "flag": 2, "pass": 3, "na": 0 },
+  "exec_issues": [
+    {
+      "title": "No human review authority",
+      "resolution": "Publish a named review board with documented oversight scope.",
+      "discovered_issue": "No disclosed human review authority, external verification process, or tamper-evident generation record found on public surface.",
+      "check_codes": "A1, A4",
+      "reg_flag": true,
+      "custody_predicate": true
+    },
+    {
+      "title": "Traceability gap",
+      "resolution": "Add source provenance to all published data.",
+      "discovered_issue": "Primary statistics lack source citations.",
+      "check_codes": "B2",
+      "reg_flag": false,
+      "custody_predicate": false
+    }
+  ],
+  "sections": [
+    {
+      "id": "A",
+      "title": "Source Chain-of-Custody",
+      "tally_label": "1 FAIL / 1 FLAG",
+      "overall_verdict": "fail",
+      "triage_label": "Read first — Regulatory / compliance",
+      "triage_is_reg": true,
+      "clean_line": null,
+      "findings": [
+        {
+          "title": "No tamper-evident record",
+          "resolution": "Implement signed generation logs.",
+          "audit_discovery": "No cryptographic or audit-log evidence of report generation found.",
+          "reg_flag": true,
+          "source_links": [
+            { "label": "Subject homepage", "url": "https://acmeai.example.com" }
+          ]
+        }
+      ],
+      "checks": [
+        { "code": "A1", "name": "Human review authority", "verdict": "FAIL", "finding": "No named review board disclosed." },
+        { "code": "A2", "name": "External verification", "verdict": "FLAG", "finding": "Partial third-party references only." },
+        { "code": "A3", "name": "Generation record", "verdict": "PASS", "finding": "Report date and preparer present." }
+      ]
+    },
+    {
+      "id": "B",
+      "title": "Data Provenance",
+      "tally_label": "1 FLAG / 2 PASS",
+      "overall_verdict": "mixed",
+      "triage_label": "Flags",
+      "triage_is_reg": false,
+      "clean_line": "Data retention and access policies documented.",
+      "findings": [
+        {
+          "title": "Traceability gap",
+          "resolution": "Add source provenance to all published data.",
+          "audit_discovery": "Primary statistics lack source citations.",
+          "reg_flag": false,
+          "source_links": []
+        }
+      ],
+      "checks": [
+        { "code": "B1", "name": "Source citation", "verdict": "FLAG", "finding": "Statistics uncited." },
+        { "code": "B2", "name": "Data retention policy", "verdict": "PASS", "finding": "Policy page found." },
+        { "code": "B3", "name": "Access controls", "verdict": "PASS", "finding": "Documented." }
+      ]
+    },
+    {
+      "id": "C",
+      "title": "Model Transparency",
+      "tally_label": "3 PASS",
+      "overall_verdict": "pass",
+      "triage_label": null,
+      "triage_is_reg": false,
+      "clean_line": "Model card, version history, and limitations disclosed.",
+      "findings": [],
+      "checks": [
+        { "code": "C1", "name": "Model card", "verdict": "PASS", "finding": "Published." },
+        { "code": "C2", "name": "Version history", "verdict": "PASS", "finding": "Public changelog found." },
+        { "code": "C3", "name": "Limitations disclosure", "verdict": "PASS", "finding": "Documented in model card." }
+      ]
+    },
+    {
+      "id": "D",
+      "title": "Governance",
+      "tally_label": "1 N/A",
+      "overall_verdict": "na",
+      "triage_label": null,
+      "triage_is_reg": false,
+      "clean_line": null,
+      "findings": [],
+      "checks": [
+        { "code": "D1", "name": "AI ethics board", "verdict": "N/A", "finding": "Not applicable at this entity size." }
+      ]
+    },
+    {
+      "id": "E",
+      "title": "Regulatory Alignment",
+      "tally_label": "1 PASS",
+      "overall_verdict": "pass",
+      "triage_label": null,
+      "triage_is_reg": false,
+      "clean_line": "EU AI Act self-classification disclosed.",
+      "findings": [],
+      "checks": [
+        { "code": "E1", "name": "EU AI Act classification", "verdict": "PASS", "finding": "Self-classified as limited risk." }
+      ]
+    },
+    {
+      "id": "F",
+      "title": "Security & Privacy",
+      "tally_label": "1 PASS",
+      "overall_verdict": "pass",
+      "triage_label": null,
+      "triage_is_reg": false,
+      "clean_line": "Privacy policy and DPA link present.",
+      "findings": [],
+      "checks": [
+        { "code": "F1", "name": "Privacy policy", "verdict": "PASS", "finding": "Found and accessible." }
+      ]
+    }
+  ],
+  "sources": {
+    "groups": [
+      {
+        "label": "Primary — Subject Site",
+        "items": [
+          { "name": "Acme AI homepage", "detail": "Crawled 14 Jul 2026; full-page capture archived.", "url": "https://acmeai.example.com" },
+          { "name": "Acme AI model card", "detail": "Published model card, accessed 14 Jul 2026.", "url": "https://acmeai.example.com/model-card" }
+        ]
+      },
+      {
+        "label": "Secondary — Regulatory",
+        "items": [
+          { "name": "EU AI Act text", "detail": "Reference only; not crawled.", "url": null }
+        ]
+      }
+    ],
+    "note": "All source URLs captured via audit-crawler run UUID placeholder. Replace with real run UUID on production report."
+  }
+}

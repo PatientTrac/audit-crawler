@@ -1,0 +1,42 @@
+{
+  "_comment": "INVALID: two exec_issues with custody_predicate: true — violates the at-most-one cross-field rule.",
+  "meta": {
+    "company_name": "Double Custody Co",
+    "company_url": "doublecustody.example.com",
+    "industry": "Test",
+    "run_date": "14 Jul 2026",
+    "preparer": "CoSuite AM",
+    "platform": "Perhaps*"
+  },
+  "tally": { "fail": 2, "flag": 0, "pass": 0, "na": 0 },
+  "exec_issues": [
+    {
+      "title": "First custody issue",
+      "resolution": "Fix first.",
+      "discovered_issue": "Issue one.",
+      "check_codes": "A1",
+      "reg_flag": true,
+      "custody_predicate": true
+    },
+    {
+      "title": "Second custody issue",
+      "resolution": "Fix second.",
+      "discovered_issue": "Issue two.",
+      "check_codes": "A2",
+      "reg_flag": true,
+      "custody_predicate": true
+    }
+  ],
+  "sections": [
+    { "id": "A", "title": "Source Chain-of-Custody", "tally_label": "2 FAIL", "overall_verdict": "fail", "triage_label": null, "triage_is_reg": false, "clean_line": null, "findings": [], "checks": [] },
+    { "id": "B", "title": "Data Provenance", "tally_label": "0", "overall_verdict": "na", "triage_label": null, "triage_is_reg": false, "clean_line": null, "findings": [], "checks": [] },
+    { "id": "C", "title": "Model Transparency", "tally_label": "0", "overall_verdict": "na", "triage_label": null, "triage_is_reg": false, "clean_line": null, "findings": [], "checks": [] },
+    { "id": "D", "title": "Governance", "tally_label": "0", "overall_verdict": "na", "triage_label": null, "triage_is_reg": false, "clean_line": null, "findings": [], "checks": [] },
+    { "id": "E", "title": "Regulatory Alignment", "tally_label": "0", "overall_verdict": "na", "triage_label": null, "triage_is_reg": false, "clean_line": null, "findings": [], "checks": [] },
+    { "id": "F", "title": "Security & Privacy", "tally_label": "0", "overall_verdict": "na", "triage_label": null, "triage_is_reg": false, "clean_line": null, "findings": [], "checks": [] }
+  ],
+  "sources": {
+    "groups": [],
+    "note": "Invalid fixture — two custody_predicate: true."
+  }
+}

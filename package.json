@@ -9,15 +9,18 @@
     "db:migrate": "psql $DATABASE_URL -f src/db/schema.sql"
   },
   "dependencies": {
-    "playwright": "^1.45.0",
+    "commander": "^12.0.0",
     "pg": "^8.12.0",
-    "robots-parser": "^3.0.1",
-    "commander": "^12.0.0"
+    "playwright": "^1.45.0",
+    "robots-parser": "^3.0.1"
   },
   "devDependencies": {
-    "tsx": "^4.16.0",
-    "typescript": "^5.5.0",
+    "@types/node": "^20.14.0",
     "@types/pg": "^8.11.0",
-    "@types/node": "^20.14.0"
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "json-schema-to-typescript": "^15.0.4",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.0"
   }
 }
