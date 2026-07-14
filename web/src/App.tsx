@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import MemoView from './MemoView';
 
+// ── crawler dashboard types ───────────────────────────────────────────────
 interface Run {
   run_uuid: string; mode: string; target_domain: string;
   group_name: string | null; started_at: string; finished_at: string | null;
@@ -104,18 +106,29 @@ function RunView({ uuid, onBack }: { uuid: string; onBack: () => void }) {
   );
 }
 
+// ── app root ──────────────────────────────────────────────────────────────
+
 export default function App() {
   const [open, setOpen] = useState<string | null>(null);
+  const isMemo = window.location.pathname === '/memo';
+
   return (
     <>
       <header>
         <h1>Audit Crawler</h1>
-        <span className="sub">evidence &amp; chain-of-custody dashboard</span>
+        <span className="sub">
+          {isMemo
+            ? 'Perhaps* 24-Point Source Integrity Check'
+            : 'evidence & chain-of-custody dashboard'}
+        </span>
+        {isMemo && <a href="/" className="header-nav-link">← Dashboard</a>}
       </header>
       <main>
-        {open
-          ? <RunView uuid={open} onBack={() => setOpen(null)} />
-          : <RunsList onOpen={setOpen} />}
+        {isMemo
+          ? <MemoView />
+          : open
+            ? <RunView uuid={open} onBack={() => setOpen(null)} />
+            : <RunsList onOpen={setOpen} />}
       </main>
     </>
   );
