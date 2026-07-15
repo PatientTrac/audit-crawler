@@ -5,9 +5,9 @@ import type { MemoInput } from './schema/memo.types';
 
 // Static fixture imports — Vite bundles these; server.fs.allow covers dev server.
 // Add new ratified fixtures here as they arrive from Colab.
-import exampleMemo from '../../../fixtures/valid/example-memo.json';
-import custodyPredTrue from '../../../fixtures/valid/custody-predicate-true.json';
-import cleanReport from '../../../fixtures/valid/clean-report.json';
+import exampleMemo from '../../fixtures/valid/example-memo.json';
+import custodyPredTrue from '../../fixtures/valid/custody-predicate-true.json';
+import cleanReport from '../../fixtures/valid/clean-report.json';
 
 type Section   = MemoInput['sections'][number];
 type ExecIssue = MemoInput['exec_issues'][number];
