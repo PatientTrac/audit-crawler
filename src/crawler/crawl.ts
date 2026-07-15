@@ -34,7 +34,18 @@ export async function crawlDomain(
     while (queue.length && captures.length < CONFIG.maxPagesPerDomain) {
       queue.sort((a, b) => b.score - a.score);
       const item = queue.shift()!;
-      if (!allowed(item.url)) continue;
+      if (!allowed(item.url)) {
+        // §6.7 (CANONICAL 49 R1): record robots-disallowed absence before skipping.
+        // Finding flag set only for audit-relevant URLs (score > default link score of 10).
+        if (!opts.dryRun) {
+          captures.push({
+            url: item.url, finalUrl: item.url, status: null,
+            sha256: '', htmlPath: '', screenshotPath: null, pdfPath: null,
+            headers: {}, blocked: item.score > 10, blockDetail: 'robots-disallowed',
+          });
+        }
+        continue;
+      }
 
       if (!opts.dryRun || item.depth === 0) {
         const resp = await page.goto(item.url, {

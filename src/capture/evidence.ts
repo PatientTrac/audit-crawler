@@ -5,7 +5,7 @@ import type { Page, Response } from 'playwright';
 
 export interface Capture {
   url: string; finalUrl: string; status: number | null;
-  sha256: string; htmlPath: string; screenshotPath: string;
+  sha256: string; htmlPath: string; screenshotPath: string | null;
   pdfPath: string | null; headers: Record<string, string>;
   blocked: boolean; blockDetail: string | null;
 }
