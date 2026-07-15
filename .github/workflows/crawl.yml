@@ -9,6 +9,9 @@ on:
       value:
         description: 'domain or group name'
         required: true
+      client_id:
+        description: 'UUID from audit.client this run belongs to (leave blank to use CLIENT_ID secret)'
+        required: false
   schedule:
     - cron: '0 6 * * 1'
 
@@ -27,6 +30,7 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           EVIDENCE_DIR: ./evidence
+          CLIENT_ID: ${{ inputs.client_id || secrets.CLIENT_ID }}
         run: |
           case "${{ inputs.mode || 'group' }}" in
             whatif) npx tsx src/index.ts whatif "${{ inputs.value }}" ;;

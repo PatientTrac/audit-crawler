@@ -2,6 +2,7 @@ import { Command } from 'commander';
 import { runWhatIf } from './modes/whatif.js';
 import { runSingle } from './modes/single.js';
 import { runGroup } from './modes/group.js';
+import { CONFIG } from './config.js';
 
 const cli = new Command().name('audit-crawler');
 
@@ -13,9 +14,11 @@ cli.command('whatif')
 cli.command('run')
   .option('--target <domain>')
   .option('--group <name>')
+  .option('--client-id <uuid>', 'audit.client UUID this run belongs to (falls back to CLIENT_ID env)')
   .action(async (o) => {
-    if (o.target) return runSingle(o.target);
-    if (o.group)  return runGroup(o.group);
+    const clientId = o.clientId ?? CONFIG.clientId;
+    if (o.target) return runSingle(o.target, undefined, clientId);
+    if (o.group)  return runGroup(o.group, clientId);
     cli.error('Provide --target <domain> or --group <name>');
   });
 
