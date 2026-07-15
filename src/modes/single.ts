@@ -4,14 +4,25 @@ import { requestWaybackSnapshot } from '../capture/wayback.js';
 import { db } from '../db/client.js';
 import { CONFIG } from '../config.js';
 
-export async function runSingle(domain: string, groupName?: string) {
+export async function runSingle(domain: string, groupName?: string, clientId?: string) {
+  const resolvedClientId = clientId || CONFIG.clientId;
+  if (!resolvedClientId) {
+    throw new Error('client_id is required: pass --client-id <uuid> or set CLIENT_ID env var');
+  }
+
+  const { rows: existing } = await db.query(
+    'SELECT id FROM audit.client WHERE id = $1', [resolvedClientId]);
+  if (existing.length === 0) {
+    throw new Error(`client_id '${resolvedClientId}' not found in audit.client`);
+  }
+
   const runUuid = randomUUID();
   const runDir = `${CONFIG.evidenceDir}/${domain}/${runUuid}`;
 
   const { rows: [run] } = await db.query(
-    `INSERT INTO audit.crawl_run (run_uuid, mode, target_domain, group_name, crawler_ua)
-     VALUES ($1, $2, $3, $4, $5) RETURNING id`,
-    [runUuid, groupName ? 'group' : 'single', domain, groupName ?? null, CONFIG.userAgent]);
+    `INSERT INTO audit.crawl_run (run_uuid, mode, target_domain, group_name, crawler_ua, client_id)
+     VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
+    [runUuid, groupName ? 'group' : 'single', domain, groupName ?? null, CONFIG.userAgent, resolvedClientId]);
 
   const { captures } = await crawlDomain(domain, { dryRun: false, runDir });
 

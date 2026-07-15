@@ -1,0 +1,17 @@
+{
+  "_comment": "INVALID: meta.industry is missing (required field).",
+  "meta": {
+    "company_name": "Missing Field Co",
+    "company_url": "missing.example.com",
+    "run_date": "14 Jul 2026",
+    "preparer": "CoSuite AM",
+    "platform": "Perhaps*"
+  },
+  "tally": { "fail": 0, "flag": 0, "pass": 0, "na": 0 },
+  "exec_issues": [],
+  "sections": [],
+  "sources": {
+    "groups": [],
+    "note": "Invalid fixture — missing meta.industry."
+  }
+}

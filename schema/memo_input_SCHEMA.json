@@ -1,0 +1,86 @@
+{
+  "_comment": "Perhaps* 24-Point Source Integrity Check — HTML Generator Input Schema v1.0",
+  "_instructions": "One JSON file per company. Fill every field. Use null for optional fields not applicable. Verdict values: PASS | FLAG | FAIL | N/A. Regulatory items go first in exec_issues list (set reg_flag: true).",
+
+  "meta": {
+    "company_name": "string — display name e.g. AegisIQ Equity AI",
+    "company_url": "string — e.g. aegisiqequity.ai",
+    "industry": "string — e.g. Financial Services",
+    "run_date": "string — e.g. 5 Jul 2026",
+    "preparer": "string — e.g. AegisIQ Limited",
+    "platform": "Perhaps*"
+  },
+
+  "tally": {
+    "fail": "integer",
+    "flag": "integer",
+    "pass": "integer",
+    "na": "integer"
+  },
+
+  "exec_issues": [
+    {
+      "_comment": "One object per flagged/failed issue. Order: regulatory items first (reg_flag: true), then substantiation gaps.",
+      "title": "string — short issue title e.g. Traceability & link integrity",
+      "resolution": "string — content fix only, no legal conclusion",
+      "discovered_issue": "string — evidence in plain language",
+      "check_codes": "string — e.g. A1, A4",
+      "reg_flag": "boolean — true if regulatory/compliance scrutinized category",
+      "custody_predicate": "boolean — at most one per report. True marks the issue that names the unified absence of a human review authority, an external verification process, and a tamper-evident generation record. When one issue carries true, it renders full in the Executive Summary modal and all other exec_issues render as single-line stub pointers to their section tabs. When no issue carries true, the modal renders unchanged."
+    }
+  ],
+
+  "sections": [
+    {
+      "id": "string — A through F",
+      "title": "string — e.g. Source Chain-of-Custody",
+      "tally_label": "string — e.g. 3 FLAG / 1 PASS",
+      "overall_verdict": "string — mixed | pass | flag | fail | na",
+
+      "triage_label": "string — e.g. Read first — Regulatory / compliance | Flags | Flag | null",
+      "triage_is_reg": "boolean — true if triage_label is regulatory",
+
+      "findings": [
+        {
+          "title": "string",
+          "resolution": "string",
+          "audit_discovery": "string",
+          "reg_flag": "boolean",
+          "source_links": [
+            {
+              "label": "string — display text",
+              "url": "string"
+            }
+          ]
+        }
+      ],
+
+      "clean_line": "string — the ✔ clean summary or null if no clean items",
+
+      "checks": [
+        {
+          "code": "string — e.g. A1",
+          "name": "string — check name",
+          "verdict": "string — PASS | FLAG | FAIL | N/A",
+          "finding": "string — one-line finding"
+        }
+      ]
+    }
+  ],
+
+  "sources": {
+    "groups": [
+      {
+        "label": "string — e.g. Primary — Subject Site",
+        "items": [
+          {
+            "name": "string — source name",
+            "detail": "string — description and basis",
+            "url": "string or null"
+          }
+        ]
+      }
+    ],
+    "note": "string — the closing methodology note"
+  }
+}

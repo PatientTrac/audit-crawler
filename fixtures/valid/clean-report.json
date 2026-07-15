@@ -1,0 +1,105 @@
+{
+  "_comment": "PLACEHOLDER — best-case clean-state fixture: zero exec_issues, all 24 checks PASS. Replace with real clean report when available.",
+  "meta": {
+    "company_name": "Clean Corp AI",
+    "company_url": "cleancorp.example.com",
+    "industry": "Financial Services",
+    "run_date": "14 Jul 2026",
+    "preparer": "CoSuite AM",
+    "platform": "Perhaps*"
+  },
+  "tally": { "fail": 0, "flag": 0, "pass": 24, "na": 0 },
+  "exec_issues": [],
+  "sections": [
+    {
+      "id": "A", "title": "Source Chain-of-Custody",
+      "tally_label": "4 PASS", "overall_verdict": "pass",
+      "triage_label": null, "triage_is_reg": false,
+      "clean_line": "Human review authority, external verification, generation record, and audit trail all documented.",
+      "findings": [],
+      "checks": [
+        { "code": "A1", "name": "Human review authority",  "verdict": "PASS", "finding": "Named review board with documented scope disclosed." },
+        { "code": "A2", "name": "External verification",   "verdict": "PASS", "finding": "Third-party verification report publicly accessible." },
+        { "code": "A3", "name": "Generation record",       "verdict": "PASS", "finding": "Timestamped generation record with cryptographic signature." },
+        { "code": "A4", "name": "Audit trail",             "verdict": "PASS", "finding": "Complete audit trail accessible to authorised parties." }
+      ]
+    },
+    {
+      "id": "B", "title": "Data Provenance",
+      "tally_label": "4 PASS", "overall_verdict": "pass",
+      "triage_label": null, "triage_is_reg": false,
+      "clean_line": "Source citations, data retention, access controls, and provenance chain all present.",
+      "findings": [],
+      "checks": [
+        { "code": "B1", "name": "Source citation",     "verdict": "PASS", "finding": "All statistics cited with primary source references." },
+        { "code": "B2", "name": "Data retention",      "verdict": "PASS", "finding": "Documented retention schedule published." },
+        { "code": "B3", "name": "Access controls",     "verdict": "PASS", "finding": "Role-based access documented and enforced." },
+        { "code": "B4", "name": "Provenance chain",    "verdict": "PASS", "finding": "Full data lineage traceable from source to output." }
+      ]
+    },
+    {
+      "id": "C", "title": "Model Transparency",
+      "tally_label": "4 PASS", "overall_verdict": "pass",
+      "triage_label": null, "triage_is_reg": false,
+      "clean_line": "Model card, version history, limitations, and training data disclosure all complete.",
+      "findings": [],
+      "checks": [
+        { "code": "C1", "name": "Model card",               "verdict": "PASS", "finding": "Comprehensive model card published." },
+        { "code": "C2", "name": "Version history",          "verdict": "PASS", "finding": "Public changelog with dated releases." },
+        { "code": "C3", "name": "Limitations disclosure",   "verdict": "PASS", "finding": "Known limitations documented in model card." },
+        { "code": "C4", "name": "Training data disclosure", "verdict": "PASS", "finding": "Training data sources and composition disclosed." }
+      ]
+    },
+    {
+      "id": "D", "title": "Governance",
+      "tally_label": "4 PASS", "overall_verdict": "pass",
+      "triage_label": null, "triage_is_reg": false,
+      "clean_line": "AI ethics board, incident response, bias testing, and override mechanism all in place.",
+      "findings": [],
+      "checks": [
+        { "code": "D1", "name": "AI ethics board",     "verdict": "PASS", "finding": "Independent ethics board with public roster." },
+        { "code": "D2", "name": "Incident response",   "verdict": "PASS", "finding": "AI incident response plan published." },
+        { "code": "D3", "name": "Bias testing",        "verdict": "PASS", "finding": "Regular bias audit schedule with published results." },
+        { "code": "D4", "name": "Human override",      "verdict": "PASS", "finding": "Human override documented for all automated decisions." }
+      ]
+    },
+    {
+      "id": "E", "title": "Regulatory Alignment",
+      "tally_label": "4 PASS", "overall_verdict": "pass",
+      "triage_label": null, "triage_is_reg": false,
+      "clean_line": "EU AI Act classification, GDPR alignment, sector compliance, and disclosure obligations all met.",
+      "findings": [],
+      "checks": [
+        { "code": "E1", "name": "EU AI Act classification", "verdict": "PASS", "finding": "High-risk conformity assessment complete and published." },
+        { "code": "E2", "name": "GDPR alignment",          "verdict": "PASS", "finding": "DPIA conducted; DPO contact published." },
+        { "code": "E3", "name": "Sector compliance",       "verdict": "PASS", "finding": "FCA sandbox participation documented." },
+        { "code": "E4", "name": "Disclosure obligations",  "verdict": "PASS", "finding": "All statutory AI disclosure requirements met." }
+      ]
+    },
+    {
+      "id": "F", "title": "Security & Privacy",
+      "tally_label": "4 PASS", "overall_verdict": "pass",
+      "triage_label": null, "triage_is_reg": false,
+      "clean_line": "Privacy policy, DPA, security certification, and vulnerability disclosure all present.",
+      "findings": [],
+      "checks": [
+        { "code": "F1", "name": "Privacy policy",            "verdict": "PASS", "finding": "Comprehensive privacy policy current and accessible." },
+        { "code": "F2", "name": "Data processing agreement", "verdict": "PASS", "finding": "DPA template published for enterprise clients." },
+        { "code": "F3", "name": "Security certification",   "verdict": "PASS", "finding": "SOC 2 Type II available under NDA." },
+        { "code": "F4", "name": "Vulnerability disclosure",  "verdict": "PASS", "finding": "Responsible disclosure policy and security.txt present." }
+      ]
+    }
+  ],
+  "sources": {
+    "groups": [
+      {
+        "label": "Primary — Subject Site",
+        "items": [
+          { "name": "Clean Corp AI homepage",    "detail": "Crawled 14 Jul 2026; full-page capture archived.", "url": "https://cleancorp.example.com" },
+          { "name": "Clean Corp AI trust portal","detail": "SOC 2 and DPA documentation.",                    "url": "https://cleancorp.example.com/trust" }
+        ]
+      }
+    ],
+    "note": "PLACEHOLDER fixture. Replace with real audit-crawler run data."
+  }
+}

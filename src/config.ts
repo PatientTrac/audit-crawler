@@ -7,4 +7,5 @@ export const CONFIG = {
   politeDelayMs: 1_500,
   evidenceDir: process.env.EVIDENCE_DIR ?? './evidence',
   databaseUrl: process.env.DATABASE_URL ?? '',
+  clientId: process.env.CLIENT_ID ?? '',
 };

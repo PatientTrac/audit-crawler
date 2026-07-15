@@ -1,0 +1,61 @@
+{
+  "_comment": "Fixture: exactly one exec_issue with custody_predicate: true. Exercises modal collapse path.",
+  "meta": {
+    "company_name": "Custody Test Co",
+    "company_url": "custodytest.example.com",
+    "industry": "Healthcare AI",
+    "run_date": "14 Jul 2026",
+    "preparer": "CoSuite AM",
+    "platform": "Perhaps*"
+  },
+  "tally": { "fail": 1, "flag": 0, "pass": 0, "na": 0 },
+  "exec_issues": [
+    {
+      "title": "Unified custody absence",
+      "resolution": "Establish human review authority, external verification, and generation record.",
+      "discovered_issue": "No human review authority, external verification process, or tamper-evident generation record found.",
+      "check_codes": "A1",
+      "reg_flag": true,
+      "custody_predicate": true
+    }
+  ],
+  "sections": [
+    {
+      "id": "A",
+      "title": "Source Chain-of-Custody",
+      "tally_label": "1 FAIL",
+      "overall_verdict": "fail",
+      "triage_label": "Read first — Regulatory / compliance",
+      "triage_is_reg": true,
+      "clean_line": null,
+      "findings": [
+        {
+          "title": "Custody absence",
+          "resolution": "Establish review authority.",
+          "audit_discovery": "No evidence of human review, external verification, or generation record.",
+          "reg_flag": true,
+          "source_links": []
+        }
+      ],
+      "checks": [
+        { "code": "A1", "name": "Human review authority", "verdict": "FAIL", "finding": "Absent." }
+      ]
+    },
+    { "id": "B", "title": "Data Provenance", "tally_label": "0", "overall_verdict": "na", "triage_label": null, "triage_is_reg": false, "clean_line": null, "findings": [], "checks": [] },
+    { "id": "C", "title": "Model Transparency", "tally_label": "0", "overall_verdict": "na", "triage_label": null, "triage_is_reg": false, "clean_line": null, "findings": [], "checks": [] },
+    { "id": "D", "title": "Governance", "tally_label": "0", "overall_verdict": "na", "triage_label": null, "triage_is_reg": false, "clean_line": null, "findings": [], "checks": [] },
+    { "id": "E", "title": "Regulatory Alignment", "tally_label": "0", "overall_verdict": "na", "triage_label": null, "triage_is_reg": false, "clean_line": null, "findings": [], "checks": [] },
+    { "id": "F", "title": "Security & Privacy", "tally_label": "0", "overall_verdict": "na", "triage_label": null, "triage_is_reg": false, "clean_line": null, "findings": [], "checks": [] }
+  ],
+  "sources": {
+    "groups": [
+      {
+        "label": "Primary — Subject Site",
+        "items": [
+          { "name": "Custody Test Co homepage", "detail": "Crawled 14 Jul 2026.", "url": "https://custodytest.example.com" }
+        ]
+      }
+    ],
+    "note": "Fixture payload — custody_predicate: true on single exec_issue."
+  }
+}
